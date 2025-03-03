@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from "@angular/common";
+import { AsyncPipe, formatDate, NgFor } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { UsersApiService } from "../users-api.servise";
 import { UserCardComponent } from "./user-card/user-card.component";
@@ -25,6 +25,20 @@ export class UsersListComponent {
       (response: User[]) => {
         this.usersService.setUsers(response);
       }
+    )
+    this.usersService.users$.subscribe((users) => console.log(users))
+  }
+
+  public createUser(formData: any) {
+    this.usersService.createUser({
+      id: new Date().getTime(),
+      name: formData.name,
+      email: formData.email,
+      website: formData.website,
+      company: {
+        name: formData.companyName
+      }
+    }
     )
   }
 

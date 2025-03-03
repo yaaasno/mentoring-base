@@ -22,9 +22,16 @@ export class TodosService {
   }
 
   createTodos(todo: Todo) {
-    this.todosSubject$.next (
-      [...this.todosSubject$.value, todo]
-    )
+    const exstingTodo = this.todosSubject$.value.find(
+      currentElement => currentElement.userId === todo.userId
+    );
+
+    if (exstingTodo !== undefined) {
+      alert('ajidfvbnp;');
+    } else {
+      this.todosSubject$.next([...this.todosSubject$.value, todo])
+      alert('sssssss');
+    }
   }
 
   deleteTodos(id: number) {

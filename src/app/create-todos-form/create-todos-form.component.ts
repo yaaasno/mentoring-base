@@ -1,0 +1,32 @@
+import { Component, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Output } from '@angular/core';
+import { NgIf } from '@angular/common';
+
+@Component ({
+  selector: 'app-create-todos-form',
+  templateUrl: './create-todos-form.component.html',
+  styleUrls: ['./create-todos-form.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf]
+})
+
+export class createTodosFormComponent {
+  @Output()
+  createTodos = new EventEmitter();
+
+  public form = new FormGroup ({
+    userId: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    title: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    completed: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  })
+
+  public submitForm(): void {
+    this.createTodos.emit(this.form.value)
+    this.form.reset();
+  }
+
+  constructor() {
+    this.form.valueChanges.subscribe((formValue) => console.log(formValue));
+  }
+}

@@ -1,0 +1,25 @@
+<h1>create todos from</h1>
+
+<div style="margin: 30px 30px 30px 0px;">
+  <form style="display: flex; flex-direction: column;" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p>userId</p>
+     <input type="text" class="form-input-todos" formControlName="userId">
+     <div *ngIf="form.controls['userId'].invalid && form.controls['userId'].dirty || form.controls['userId'].touched" class="alert-todos">
+       <div *ngIf="form.controls['userId'].errors">userId введен неправильно</div>
+       </div>
+
+    <p>title</p>
+    <input type="text" class="form-input-todos" formControlName="title">
+    <div *ngIf="form.controls['title'].invalid && form.controls['title'].dirty || form.controls['title'].touched" class="alert-todos">
+      <div *ngIf="form.controls['title'].errors">title введен неправильно</div>
+    </div>
+
+    <p>completed</p>
+    <input type="text" class="form-input-todos" formControlName="completed">
+    <div *ngIf="form.controls['completed'].invalid && form.controls['completed'].dirty || form.controls['completed'].touched" class="alert-todos">
+      <div *ngIf="form.controls['completed'].errors">completed введен неправильно</div>
+    </div>
+
+    <button style="width: 150px; margin-top: 20px;" type="submit" [disabled]="form.invalid">Create todos</button>
+  </form>
+</div>

@@ -1,12 +1,31 @@
 <h1>create user form</h1>
 
-<form>
-  <p>name</p>
-  <input type="text">
-  <p>email</p>
-  <input type="text">
-  <p>name</p>
-  <input type="text">
-  <p>name</p>
-  <input type="text">
-</form>
+<div style="margin: 30px 30px 30px 0px;">
+  <form style="display: flex; flex-direction: column;" [formGroup]="form" (ngSubmit)="submitForm()">
+    <p>name</p>
+    <input type="text" class="form-input" formControlName="name">
+    <div *ngIf="form.controls['name'].invalid && form.controls['name'].dirty || form.controls['name'].touched" class="alert">
+      <div *ngIf="form.controls['name'].errors">Имя введено неправильно</div>
+    </div>
+
+    <p>email</p>
+    <input type="text" class="form-input" formControlName="email">
+    <div *ngIf="form.controls['email'].invalid && form.controls['email'].dirty || form.controls['name'].touched" class="alert">
+      <div *ngIf="form.controls['email'].errors">Email введен неправильно</div>
+    </div>
+
+    <p>website</p>
+    <input type="text" class="form-input" formControlName="website">
+    <div *ngIf="form.controls['website'].invalid && form.controls['website'].dirty || form.controls['name'].touched" class="alert">
+      <div *ngIf="form.controls['website'].errors">Website введен неправильно</div>
+    </div>
+
+    <p>Company name</p>
+    <input type="text" class="form-input" formControlName="companyName">
+    <div *ngIf="form.controls['companyName'].invalid && form.controls['companyName'].dirty || form.controls['name'].touched" class="alert">
+      <div *ngIf="form.controls['companyName'].errors">Имя компании введно неправильно</div>
+    </div>
+
+    <button style="width: 150px; margin-top: 20px;" [disabled]="!form.valid">Create User</button>
+  </form>
+</div>
