@@ -6,7 +6,7 @@ import { NgIf } from '@angular/common';
 @Component ({
   selector: 'app-create-todos-form',
   templateUrl: './create-todos-form.component.html',
-  styleUrls: ['./create-todos-form.component.scss'],
+  styleUrl: './create-todos-form.component.scss',
   standalone: true,
   imports: [ReactiveFormsModule, NgIf]
 })
@@ -27,6 +27,6 @@ export class createTodosFormComponent {
   }
 
   constructor() {
-    this.form.valueChanges.subscribe((formValue) => console.log(formValue));
+    this.form.valueChanges.subscribe()
   }
 }

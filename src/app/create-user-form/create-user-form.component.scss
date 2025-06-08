@@ -1,7 +1,21 @@
-.form-input {
-  width: 150px;
+.user-form {
+  margin: 30px 30px 30px 0px;
+}
+
+.form-up {
+  display: flex;
+  flex-direction: column;
 }
 
 .alert {
   color: red;
+}
+
+.form-input {
+  width: 150px;
+}
+
+.form-button {
+  width: 150px;
+  margin-top: 20px;
 }

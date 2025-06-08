@@ -1,7 +1,7 @@
 <h1>create user form</h1>
 
-<div style="margin: 30px 30px 30px 0px;">
-  <form style="display: flex; flex-direction: column;" [formGroup]="form" (ngSubmit)="submitForm()">
+<div class="user-form">
+  <form class="form-up" [formGroup]="form" (ngSubmit)="submitForm()">
     <p>name</p>
     <input type="text" class="form-input" formControlName="name">
     <div *ngIf="form.controls['name'].invalid && form.controls['name'].dirty || form.controls['name'].touched" class="alert">
@@ -26,6 +26,6 @@
       <div *ngIf="form.controls['companyName'].errors">Имя компании введно неправильно</div>
     </div>
 
-    <button style="width: 150px; margin-top: 20px;" [disabled]="!form.valid">Create User</button>
+    <button class="form-button" [disabled]="!form.valid">Create User</button>
   </form>
 </div>

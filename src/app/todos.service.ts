@@ -26,7 +26,7 @@ export class TodosService {
       currentElement => currentElement.userId === todo.userId
     );
 
-    if (exstingTodo !== undefined) {
+    if (exstingTodo) {
       alert('ajidfvbnp;');
     } else {
       this.todosSubject$.next([...this.todosSubject$.value, todo])

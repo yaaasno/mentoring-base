@@ -26,10 +26,10 @@ export class TodoListComponent {
         this.todosService.setTodos(response);
       }
     )
-    this.todosService.todos$.subscribe((todos) => console.log(todos))
+    this.todosService.todos$.subscribe()
   }
 
-  public createTodo(formData: any) {
+  public createTodo(formData: Todo) {
     this.todosService.createTodos({
       id: new Date().getTime(),
       userId: formData.userId,

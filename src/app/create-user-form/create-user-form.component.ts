@@ -28,6 +28,6 @@ export class createUserFormComponent {
   }
 
   constructor() {
-    this.form.valueChanges.subscribe((formValue) => console.log(formValue));
+    this.form.valueChanges.subscribe()
   }
 }

@@ -26,7 +26,7 @@ export class UsersService {
       currentElement => currentElement.email === user.email
     );
 
-    if (existingUser !== undefined) {
+    if (existingUser) {
       alert('ajidfvbnp;')
     } else {
       this.usersSubject$.next([...this.usersSubject$.value, user])

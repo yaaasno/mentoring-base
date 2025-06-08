@@ -26,20 +26,19 @@ export class UsersListComponent {
         this.usersService.setUsers(response);
       }
     )
-    this.usersService.users$.subscribe((users) => console.log(users))
+    this.usersService.users$.subscribe()
   }
 
-  public createUser(formData: any) {
+  public createUser(formData: User) {
     this.usersService.createUser({
       id: new Date().getTime(),
       name: formData.name,
       email: formData.email,
       website: formData.website,
       company: {
-        name: formData.companyName
+        name: formData.name
       }
-    }
-    )
+    })
   }
 
   deleteUser (id: number) {
