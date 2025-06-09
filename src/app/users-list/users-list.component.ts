@@ -36,7 +36,7 @@ export class UsersListComponent {
       email: formData.email,
       website: formData.website,
       company: {
-        name: formData.name
+        name: formData.company.name
       }
     })
   }
