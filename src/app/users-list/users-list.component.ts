@@ -5,6 +5,7 @@ import { UserCardComponent } from "./user-card/user-card.component";
 import { ChangeDetectionStrategy } from "@angular/core";
 import { UsersService } from "../users.service";
 import { User } from "./user";
+import { companyUser } from "./company-user";
 import { createUserFormComponent } from "../create-user-form/create-user-form.component";
 
 @Component ({
@@ -29,14 +30,21 @@ export class UsersListComponent {
     this.usersService.users$.subscribe()
   }
 
-  public createUser(formData: User) {
+  public editUser(formDialogValue: User) {
+    this.usersService.editUser({
+      ...formDialogValue
+    })
+  }
+
+
+  public createUser(user: companyUser) {
     this.usersService.createUser({
       id: new Date().getTime(),
-      name: formData.name,
-      email: formData.email,
-      website: formData.website,
+      name: user.name,
+      email: user.email,
+      website: user.website,
       company: {
-        name: formData.company.name
+        name: user.company.name
       }
     })
   }

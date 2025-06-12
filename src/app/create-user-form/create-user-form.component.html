@@ -3,28 +3,30 @@
 <div class="user-form">
   <form class="form-up" [formGroup]="form" (ngSubmit)="submitForm()">
     <p>name</p>
-    <input type="text" class="form-input" formControlName="name">
-    <div *ngIf="form.controls['name'].invalid && form.controls['name'].dirty || form.controls['name'].touched" class="alert">
-      <div *ngIf="form.controls['name'].errors">Имя введено неправильно</div>
-    </div>
+      <input type="text" class="form-input" formControlName="name">
+        <div *ngIf="form.controls['name'].invalid && form.controls['name'].dirty || form.controls['name'].touched" class="alert">
+          <div *ngIf="form.controls['name'].errors">Имя введено неправильно</div>
+        </div>
 
     <p>email</p>
-    <input type="text" class="form-input" formControlName="email">
-    <div *ngIf="form.controls['email'].invalid && form.controls['email'].dirty || form.controls['name'].touched" class="alert">
-      <div *ngIf="form.controls['email'].errors">Email введен неправильно</div>
-    </div>
+      <input type="text" class="form-input" formControlName="email">
+        <div *ngIf="form.controls['email'].invalid && form.controls['email'].dirty || form.controls['name'].touched" class="alert">
+          <div *ngIf="form.controls['email'].errors">Email введен неправильно</div>
+        </div>
 
     <p>website</p>
-    <input type="text" class="form-input" formControlName="website">
-    <div *ngIf="form.controls['website'].invalid && form.controls['website'].dirty || form.controls['name'].touched" class="alert">
-      <div *ngIf="form.controls['website'].errors">Website введен неправильно</div>
-    </div>
+      <input type="text" class="form-input" formControlName="website">
+        <div *ngIf="form.controls['website'].invalid && form.controls['website'].dirty || form.controls['name'].touched" class="alert">
+          <div *ngIf="form.controls['website'].errors">Website введен неправильно</div>
+        </div>
 
     <p>Company name</p>
-    <input type="text" class="form-input" formControlName="companyName">
-    <div *ngIf="form.controls['companyName'].invalid && form.controls['companyName'].dirty || form.controls['name'].touched" class="alert">
-      <div *ngIf="form.controls['companyName'].errors">Имя компании введно неправильно</div>
-    </div>
+      <input type="text" class="form-input" formGroupName="company">
+      <div formControlName="name">
+        <div *ngIf="form.controls['name'].invalid && form.controls['name'].dirty || form.controls['name'].touched" class="alert">
+          <div *ngIf="form.controls['name'].errors">Имя компании введно неправильно</div>
+        </div>
+      </div>
 
     <button class="form-button" [disabled]="!form.valid">Create User</button>
   </form>
