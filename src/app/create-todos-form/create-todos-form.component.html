@@ -1,24 +1,30 @@
 <h1>create todos from</h1>
 
-<div class="todo-form">
+<div style="margin-bottom: 50px;">
   <form class="form-table" [formGroup]="form" (ngSubmit)="submitForm()">
-    <p>userId</p>
-     <input type="text" class="form-input-todos" formControlName="userId">
-     <div *ngIf="form.controls['userId'].invalid && form.controls['userId'].dirty || form.controls['userId'].touched" class="alert-todos">
-       <div *ngIf="form.controls['userId'].errors">userId введен неправильно</div>
-       </div>
+    <mat-form-field class="my-form-field">
+      <mat-label>userId</mat-label>
+      <input matInput type="text" formControlName="userId">
+      <mat-error *ngIf="form.controls['userId'].invalid && (form.controls['userId'].dirty || form.controls['userId'].touched)">
+        userId введен неправильно
+      </mat-error>
+    </mat-form-field>
 
-    <p>title</p>
-    <input type="text" class="form-input-todos" formControlName="title">
-    <div *ngIf="form.controls['title'].invalid && form.controls['title'].dirty || form.controls['title'].touched" class="alert-todos">
-      <div *ngIf="form.controls['title'].errors">title введен неправильно</div>
-    </div>
+    <mat-form-field class="my-form-field">
+      <mat-label>title</mat-label>
+      <input matInput type="text" formControlName="title">
+      <mat-error *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">
+        title введен неправильно
+      </mat-error>
+    </mat-form-field>
 
-    <p>completed</p>
-    <input type="text" class="form-input-todos" formControlName="completed">
-    <div *ngIf="form.controls['completed'].invalid && form.controls['completed'].dirty || form.controls['completed'].touched" class="alert-todos">
-      <div *ngIf="form.controls['completed'].errors">completed введен неправильно</div>
-    </div>
+    <mat-form-field class="my-form-field">
+      <mat-label>completed</mat-label>
+      <input matInput type="text" formControlName="completed">
+      <mat-error *ngIf="form.controls['completed'].invalid && (form.controls['completed'].dirty || form.controls['completed'].touched)">
+        completed введен неправильно
+      </mat-error>
+    </mat-form-field>
 
     <button mat-button class="form-button" type="submit" [disabled]="form.invalid">Create todos</button>
   </form>

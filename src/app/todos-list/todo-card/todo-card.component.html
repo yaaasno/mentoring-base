@@ -1,17 +1,10 @@
-<div style="width: 200px; height: 100%; border: 1px solid black;">
-  <p>Текст Задачи</p>
-  <div>
-    {{todo.title}}
-  </div>
-
-  <p>Автор Задачи</p>
-  <div>
-    {{todo.userId}}
-  </div>
-
-  <p>Задача Завершена</p>
-  <div>
-    {{todo.completed ? 'ДА' : 'НЕТ'}}
-  </div>
-  <button (click)=onDeleteTodo(todo.id)>Удалить Задачу</button>
-</div>
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{todo.title}}</mat-card-title>
+    <mat-card-title>{{todo.userId}}</mat-card-title>
+    <mat-card-title> {{todo.completed ? 'ДА' : 'НЕТ'}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button (click)=onDeleteTodo(todo.id)>Удалить Задачу</button>
+  </mat-card-actions>
+</mat-card>

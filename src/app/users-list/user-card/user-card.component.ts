@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, inject } from "@angular/core";
 import { User } from '../user';
 import { NgFor } from "@angular/common";
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 
 @Component({
   selector: 'app-user-card',
@@ -16,6 +18,24 @@ export class UserCardComponent {
 
   @Output()
   deleteUser = new EventEmitter();
+
+  @Output()
+  editUser = new EventEmitter();
+
+  readonly dialog = inject(MatDialog);
+
+   openDialog(): void {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
+      data: { user: this.user }
+    })
+
+    dialogRef.afterClosed().subscribe((editResult) => {
+      console.log('Модалака закрылась, значение формы: ', editResult);
+      if (!editResult) {
+        this.editUser.emit(editResult);
+      }
+    })
+  }
 
   onDeleteUser(userId: number) {
     this.deleteUser.emit(userId)

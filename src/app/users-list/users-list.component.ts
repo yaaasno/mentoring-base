@@ -36,6 +36,9 @@ export class UsersListComponent {
     })
   }
 
+  deleteUser (id: number) {
+    this.usersService.deleteUser(id)
+  }
 
   public createUser(user: companyUser) {
     this.usersService.createUser({
@@ -47,9 +50,5 @@ export class UsersListComponent {
         name: user.company.name
       }
     })
-  }
-
-  deleteUser (id: number) {
-    this.usersService.deleteUser(id)
   }
 }

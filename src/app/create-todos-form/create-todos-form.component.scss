@@ -1,22 +1,13 @@
-.todo-form {
-  margin: 30px 30px 30px 0px;
-}
-
-.form-input-todos {
-  width: 150px;
-}
-
-.alert-todos {
-  color: red;
-}
-
-
 .form-table {
   display: flex;
-   flex-direction: column;
+  flex-direction: column;
 }
 
 .form-button {
   width: 150px;
   margin-top: 20px;
+}
+
+.my-form-field {
+  width: 30%;
 }

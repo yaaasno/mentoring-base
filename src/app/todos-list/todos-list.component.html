@@ -1,5 +1,3 @@
-<h1 style="margin-top: 50px;">КОМПОНЕНТ СПИСКА ЗАДАЧ</h1>
-
 <app-create-todos-form (createTodos)="createTodo($event)"></app-create-todos-form>
 <div class="todo-form">
   <div *ngFor="let todo of todosService.todos$ | async">
