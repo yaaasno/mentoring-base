@@ -1,11 +1,11 @@
 <h1>create todos from</h1>
 
-<div style="margin-bottom: 50px;">
+<div>
   <form class="form-table" [formGroup]="form" (ngSubmit)="submitForm()">
     <mat-form-field class="my-form-field">
       <mat-label>userId</mat-label>
       <input matInput type="text" formControlName="userId">
-      <mat-error *ngIf="form.controls['userId'].invalid && (form.controls['userId'].dirty || form.controls['userId'].touched)">
+      <mat-error>
         userId введен неправильно
       </mat-error>
     </mat-form-field>
@@ -13,7 +13,7 @@
     <mat-form-field class="my-form-field">
       <mat-label>title</mat-label>
       <input matInput type="text" formControlName="title">
-      <mat-error *ngIf="form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)">
+      <mat-error>
         title введен неправильно
       </mat-error>
     </mat-form-field>
@@ -21,7 +21,7 @@
     <mat-form-field class="my-form-field">
       <mat-label>completed</mat-label>
       <input matInput type="text" formControlName="completed">
-      <mat-error *ngIf="form.controls['completed'].invalid && (form.controls['completed'].dirty || form.controls['completed'].touched)">
+      <mat-error>
         completed введен неправильно
       </mat-error>
     </mat-form-field>

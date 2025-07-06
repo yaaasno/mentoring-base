@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, inject } from "@angular/core";
 import { User } from '../user';
-import { NgFor } from "@angular/common";
+import { CustomUpperCasePipe } from '../../user-pipes/upper-case.pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 
@@ -9,7 +9,7 @@ import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.co
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
   standalone: true,
-  imports: [NgFor]
+  imports: [ CustomUpperCasePipe ]
 })
 
 export class UserCardComponent {
@@ -17,10 +17,10 @@ export class UserCardComponent {
   user!: User;
 
   @Output()
-  deleteUser = new EventEmitter();
+  deleteUser = new EventEmitter<number>();
 
   @Output()
-  editUser = new EventEmitter();
+  editUser = new EventEmitter<User>();
 
   readonly dialog = inject(MatDialog);
 
@@ -29,10 +29,9 @@ export class UserCardComponent {
       data: { user: this.user }
     })
 
-    dialogRef.afterClosed().subscribe((editResult) => {
-      console.log('Модалака закрылась, значение формы: ', editResult);
+    dialogRef.afterClosed().subscribe((editResult: User) => {
       if (!editResult) {
-        this.editUser.emit(editResult);
+        this.editUser.emit(this.user);
       }
     })
   }

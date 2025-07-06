@@ -5,7 +5,7 @@
       <mat-form-field class="my-form-field">
         <mat-label>Имя</mat-label>
         <input matInput type="text" formControlName="name">
-          <mat-error *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)">
+          <mat-error>
             Имя введно неправильно
           </mat-error>
       </mat-form-field>
@@ -13,7 +13,7 @@
       <mat-form-field class="my-form-field">
         <mat-label>Email</mat-label>
           <input matInput type="text" formControlName="email">
-            <mat-error *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+            <mat-error>
               Email введен неправильно
             </mat-error>
       </mat-form-field>
@@ -21,7 +21,7 @@
       <mat-form-field class="my-form-field">
         <mat-label>Website</mat-label>
           <input matInput type="text" formControlName="website">
-            <mat-error *ngIf="form.get('website')?.invalid && (form.get('website')?.dirty || form.get('website')?.touched)">
+            <mat-error>
               Website введен неправильно
             </mat-error>
       </mat-form-field>
@@ -29,7 +29,7 @@
       <mat-form-field class="my-form-field" formGroupName="company">
         <mat-label>Company</mat-label>
           <input matInput type="text" formControlName="name">
-            <mat-error *ngIf="form.get('company.name')?.invalid && (form.get('company.name')?.dirty || form.get('company.name')?.touched)">
+            <mat-error>
               Имя компании введено неправильно
             </mat-error>
       </mat-form-field>
