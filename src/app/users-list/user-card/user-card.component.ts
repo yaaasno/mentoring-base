@@ -30,8 +30,8 @@ export class UserCardComponent {
     })
 
     dialogRef.afterClosed().subscribe((editResult: User) => {
-      if (!editResult) {
-        this.editUser.emit(this.user);
+      if (editResult) {
+        this.editUser.emit(editResult);
       }
     })
   }

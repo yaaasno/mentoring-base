@@ -13,13 +13,15 @@ import { forwardRef } from "@angular/core";
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.scss',
   standalone: true,
-  imports: [NgFor, TodoCardComponent, AsyncPipe, createTodosFormComponent, forwardRef(() => DatePipeComponent)],
+  imports: [ NgFor, TodoCardComponent, AsyncPipe, createTodosFormComponent, DatePipe ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class TodoListComponent {
   readonly todosApiService = inject(TodosApiService)
   readonly todosService = inject(TodosService)
+
+  today: number = Date.now();
 
   constructor () {
     this.todosApiService.getTodos().subscribe(
@@ -43,18 +45,4 @@ export class TodoListComponent {
   deleteTodo(id: number) {
     this.todosService.deleteTodos(id)
   }
-}
-
-@Component({
-  selector: 'date-pipe',
-  styleUrl: './todos-list.component.scss',
-  standalone: true,
-  imports: [DatePipe],
-  template: `<div class="date-pipe">
-    <p>Дата {{today | date:'medium'}}</p>
-  </div>`
-})
-
-export class DatePipeComponent {
-  today: number = Date.now();
 }

@@ -26,7 +26,7 @@ export class TodoCardComponent {
   onDeleteTodo(todoId: number) {
   const dialogRef = this.dialog.open(ConfirmDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
         this.deleteTodo.emit(todoId)
       }
