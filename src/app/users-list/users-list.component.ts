@@ -48,7 +48,8 @@ export class UsersListComponent {
       website: user.website,
       company: {
         name: user.company.name
-      }
+      },
+      phone: user.phone
     })
   }
 }

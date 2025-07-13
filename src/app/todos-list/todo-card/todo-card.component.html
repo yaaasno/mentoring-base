@@ -3,7 +3,6 @@
     <mat-card-title>{{todo.title | customLimit}}</mat-card-title>
     <mat-card-title>{{todo.userId}}</mat-card-title>
     <mat-card-title>{{todo.completed ? 'ДА' : 'НЕТ'}}</mat-card-title>
-    <mat-card-title>{{todo.phone | removeDashes}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
     <button (click)=onDeleteTodo(todo.id)>Удалить Задачу</button>

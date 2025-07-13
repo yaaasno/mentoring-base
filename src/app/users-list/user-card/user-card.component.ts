@@ -3,13 +3,14 @@ import { User } from '../user';
 import { CustomUpperCasePipe } from '../../user-pipes/upper-case.pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+import { RemoveDashesPipe } from "../../user-pipes/removing-dashes.pipe";
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
   standalone: true,
-  imports: [ CustomUpperCasePipe ]
+  imports: [ CustomUpperCasePipe, RemoveDashesPipe ]
 })
 
 export class UserCardComponent {
