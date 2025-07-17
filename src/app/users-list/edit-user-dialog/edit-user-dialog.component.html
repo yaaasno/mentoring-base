@@ -33,9 +33,9 @@
             </mat-error>
       </mat-form-field>
 
-    <button mat-button class="form-button"
-     [disabled]="!form.valid"
+    <button mat-button matTooltip="Редактировать данные пользователя" class="form-button"
+      [disabled]="!form.valid"
       [mat-dialog-close]="userWithUpdatedFields">
-      Create User
+        Редактировать
     </button>
   </form>

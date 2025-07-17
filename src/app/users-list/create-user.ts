@@ -1,9 +1,9 @@
 export interface createUser {
-  id: number,
-  name: string,
-  email: string
-  website: string,
+  id: number;
+  name: string;
+  email: string;
+  website: string;
   company: {
-    name: string,
-  }
+    name: string
+  };
 }

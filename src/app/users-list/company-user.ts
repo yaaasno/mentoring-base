@@ -1,9 +1,9 @@
 export interface companyUser {
-  phone: number,
+  phone: number;
   company: {
-    name: string,
+    name: string
   };
-  name: string,
-  email: string,
-  website: string
+  name: string;
+  email: string;
+  website: string;
 }

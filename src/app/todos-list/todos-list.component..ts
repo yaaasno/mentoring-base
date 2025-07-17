@@ -6,14 +6,14 @@ import { ChangeDetectionStrategy } from "@angular/core";
 import { TodosService } from '../todos.service';
 import { Todo } from './todo-create';
 import { createTodosFormComponent } from "../create-todos-form/create-todos-form.component";
-import { forwardRef } from "@angular/core";
+import { YellowDirective } from '../directives/yellow.directive';
 
 @Component ({
   selector: 'app-user-list',
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.scss',
   standalone: true,
-  imports: [ NgFor, TodoCardComponent, AsyncPipe, createTodosFormComponent, DatePipe ],
+  imports: [ NgFor, TodoCardComponent, AsyncPipe, createTodosFormComponent, DatePipe, YellowDirective ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

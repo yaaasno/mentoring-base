@@ -10,7 +10,7 @@ import { CustomLimitPipe } from '../../todo-pipe/limit.pipe';
   templateUrl: './todo-card.component.html',
   styleUrl: './todo-card.component.scss',
   standalone: true,
-  imports: [MatCardModule, CustomLimitPipe]
+  imports: [MatCardModule, CustomLimitPipe ]
 })
 
 export class TodoCardComponent {

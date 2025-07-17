@@ -23,7 +23,6 @@ export class createTodosFormComponent {
     userId: new FormControl('', [Validators.required, Validators.minLength(1)]),
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
     completed: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)])
   })
 
   public submitForm(): void {
