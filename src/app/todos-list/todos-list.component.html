@@ -1,5 +1,5 @@
 <h1>Дата {{today | date:'medium'}}</h1>
-<button yellow>Пусто</button>
+<button yellow class="btn">Пусто</button>
 <app-create-todos-form (createTodos)="createTodo($event)"></app-create-todos-form>
 <div class="todo-form">
   <div *ngFor="let todo of todosService.todos$ | async">

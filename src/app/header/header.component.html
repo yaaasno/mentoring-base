@@ -1,0 +1,2 @@
+<button (click)="openDialog" *ngIf="(userService.user$ | async) === null">Войти</button>
+<button (click)="logout" *ngIf="(userService.user$ | async) !== null">Выйти</button>
