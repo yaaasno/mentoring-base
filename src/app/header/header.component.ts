@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthComponent } from '../auth/auth.component';
 import { RouterLink } from '@angular/router';
-import { UsersService } from '../admin.servis';
+import { UsersService } from '../admin.service';
 import { AsyncPipe, NgIf } from '@angular/common';
 
 @Component ({
@@ -31,12 +31,8 @@ export class AdminComponent {
     })
   }
 
-  public logout() {
-    if(confirm('Вы уверены, что хотите выйти?')) {
-      return this.userService.logout();
-    }
-    else {
-      return false
-    }
+  public logout(): void | false {
+    const isConfirmed = confirm('Вы уверены, что хотите выйти?');
+    return isConfirmed ? this.userService.logout() : false;
   }
 }

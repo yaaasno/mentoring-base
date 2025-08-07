@@ -1,13 +1,13 @@
 import { inject } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
-import { UsersService } from "./users.service";
+import { UsersService } from "./admin.service";
 
 export const authGuard: CanActivateFn = (route, state) => {
 
   const userService = inject(UsersService);
   const router = inject(Router);
 
-  if(userService.isAdmin) {
+  if (userService.isAdmin) {
     return true
   }
   else {

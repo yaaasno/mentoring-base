@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
+
 export interface IUser {
   name: string;
   email: string;
-  isAdmin: boolean | null;
+  isAdmin: boolean;
 }
 
 @Injectable({
@@ -17,20 +18,20 @@ export class UsersService {
 
   private user: IUser = {
     name: 'Влад',
-    email: 'Путин',
-    isAdmin: null
+    email: 'vlad@gmail.com',
+    isAdmin: false
   }
 
-  loginAsAdmin() {
+  loginAsAdmin(): void {
     this.userSubject$.next({...this.user, isAdmin: true});
   }
 
-  loginUser() {
+  loginUser(): void {
     this.userSubject$.next({...this.user, isAdmin: false});
   }
 
-  get isAdmin() {
-    return this.userSubject$.value?.isAdmin
+  get isAdmin(): boolean {
+    return this.userSubject$.value?.isAdmin === true;
   }
 
   logout() {
