@@ -30,8 +30,8 @@ export class UsersService {
     this.userSubject$.next({...this.user, isAdmin: false});
   }
 
-  get isAdmin(): boolean {
-    return this.userSubject$.value?.isAdmin === true;
+  get isAdmin(): boolean | undefined {
+    return this.userSubject$.value?.isAdmin;
   }
 
   logout() {

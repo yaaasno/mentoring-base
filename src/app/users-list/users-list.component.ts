@@ -7,6 +7,9 @@ import { UsersService } from "../users.service";
 import { User } from "./user";
 import { companyUser } from "./company-user";
 import { createUserFormComponent } from "../create-user-form/create-user-form.component";
+import { Store } from "@ngrx/store";
+import { UsersActions } from "./user-store/users.actions";
+import { selectUsers } from "./user-store/users.selector";
 
 @Component ({
   selector: 'app-users-list',
@@ -20,11 +23,14 @@ import { createUserFormComponent } from "../create-user-form/create-user-form.co
 export class UsersListComponent {
   readonly usersApiServise = inject(UsersApiService);
   readonly usersService = inject(UsersService);
+  private readonly store = inject(Store);
+  public readonly users$ = this.store.select(selectUsers);
 
   constructor () {
     this.usersApiServise.getUsers().subscribe(
       (response: User[]) => {
         this.usersService.setUsers(response);
+        this.store.dispatch(UsersActions.setUsers({ users: response }));
       }
     )
     this.usersService.users$.subscribe()
@@ -34,10 +40,12 @@ export class UsersListComponent {
     this.usersService.editUser({
       ...formDialogValue
     })
+    this.store.dispatch(UsersActions.editUser({ user: formDialogValue }));
   }
 
   deleteUser (id: number) {
-    this.usersService.deleteUser(id)
+    this.usersService.deleteUser(id);
+    this.store.dispatch(UsersActions.deleteUser({ id }));
   }
 
   public createUser(user: companyUser) {
@@ -50,6 +58,17 @@ export class UsersListComponent {
         name: user.company.name
       },
       phone: user.phone
-    })
+    });
+    this.store.dispatch(UsersActions.createUser({ user: {
+      id: new Date().getTime(),
+      name: user.name,
+      email: user.email,
+      website: user.website,
+      company: {
+        name: user.company.name
+      },
+      phone: user.phone
+    }}));
   }
 }
+export { User };

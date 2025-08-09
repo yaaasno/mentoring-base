@@ -7,6 +7,8 @@ import { TodosService } from '../todos.service';
 import { Todo } from './todo-create';
 import { createTodosFormComponent } from "../create-todos-form/create-todos-form.component";
 import { YellowDirective } from '../directives/yellow.directive';
+import { Store } from '@ngrx/store';
+import { TodosActions } from './todos-store/todos.actions';
 
 @Component ({
   selector: 'app-user-list',
@@ -18,8 +20,10 @@ import { YellowDirective } from '../directives/yellow.directive';
 })
 
 export class TodoListComponent {
-  readonly todosApiService = inject(TodosApiService)
-  readonly todosService = inject(TodosService)
+  readonly todosApiService = inject(TodosApiService);
+  readonly todosService = inject(TodosService);
+  private readonly store = inject(Store);
+  public readonly todos$ = this.todosService.todos$;
 
   today: number = Date.now();
 
@@ -27,6 +31,7 @@ export class TodoListComponent {
     this.todosApiService.getTodos().subscribe(
       (response: Todo[]) => {
         this.todosService.setTodos(response);
+        this.store.dispatch(TodosActions.setTodos({ todos: response }));
       }
     )
     this.todosService.todos$.subscribe()
@@ -39,10 +44,20 @@ export class TodoListComponent {
       title: formData.title,
       completed: formData.completed,
       phone: formData.phone
-    })
+    });
+    this.store.dispatch(TodosActions.createTodos({ todo: {
+      id: new Date().getTime(),
+      userId: formData.userId,
+      title: formData.title,
+      completed: formData.completed,
+      phone: formData.phone
+    }}));
   }
 
   deleteTodo(id: number) {
-    this.todosService.deleteTodos(id)
+    this.todosService.deleteTodos(id);
+    this.store.dispatch(TodosActions.deleteTodos({ id }));
   }
 }
+
+export { Todo };
