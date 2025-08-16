@@ -3,7 +3,6 @@ import { Component, inject } from '@angular/core';
 import { TodosApiService } from '../todos-api.service';
 import { TodoCardComponent } from './todo-card/todo-card.component';
 import { ChangeDetectionStrategy } from "@angular/core";
-import { TodosService } from '../todos.service';
 import { Todo } from './todo-create';
 import { createTodosFormComponent } from "../create-todos-form/create-todos-form.component";
 import { YellowDirective } from '../directives/yellow.directive';
@@ -21,30 +20,20 @@ import { TodosActions } from './todos-store/todos.actions';
 
 export class TodoListComponent {
   readonly todosApiService = inject(TodosApiService);
-  readonly todosService = inject(TodosService);
   private readonly store = inject(Store);
-  public readonly todos$ = this.todosService.todos$;
+  public readonly todos$ = this.store.select('todos');
 
   today: number = Date.now();
 
   constructor () {
     this.todosApiService.getTodos().subscribe(
       (response: Todo[]) => {
-        this.todosService.setTodos(response);
         this.store.dispatch(TodosActions.setTodos({ todos: response }));
       }
     )
-    this.todosService.todos$.subscribe()
   }
 
   public createTodo(formData: Todo) {
-    this.todosService.createTodos({
-      id: new Date().getTime(),
-      userId: formData.userId,
-      title: formData.title,
-      completed: formData.completed,
-      phone: formData.phone
-    });
     this.store.dispatch(TodosActions.createTodos({ todo: {
       id: new Date().getTime(),
       userId: formData.userId,
@@ -55,9 +44,6 @@ export class TodoListComponent {
   }
 
   deleteTodo(id: number) {
-    this.todosService.deleteTodos(id);
     this.store.dispatch(TodosActions.deleteTodos({ id }));
   }
 }
-
-export { Todo };

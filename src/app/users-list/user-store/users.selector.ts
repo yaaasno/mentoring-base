@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { User } from "../users-list.component";
+import { User } from "../user";
 
 interface UserState {
   users: User[];

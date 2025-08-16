@@ -4,15 +4,16 @@ import { AuthComponent } from '../auth/auth.component';
 import { RouterLink } from '@angular/router';
 import { UsersService } from '../admin.service';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { AdminComponent } from '../admin/admin.component';
 
 @Component ({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  imports: [RouterLink, NgIf, AsyncPipe],
+  imports: [RouterLink, NgIf, AsyncPipe, AdminComponent],
 })
 
-export class AdminComponent {
+export class HeadComponent {
   private readonly dialog = inject(MatDialog)
   public readonly userService = inject(UsersService);
 
@@ -33,6 +34,6 @@ export class AdminComponent {
 
   public logout(): void | false {
     const isConfirmed = confirm('Вы уверены, что хотите выйти?');
-    return isConfirmed ? this.userService.logout() : false;
+    return isConfirmed? this.userService.logout() : false;
   }
 }

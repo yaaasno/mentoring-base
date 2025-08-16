@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { UsersActions } from "./users.actions";
-import { User } from "../users-list.component";
+import { User } from "../user";
 
 const initialState: { users: User[] } = {
   users: [],
@@ -11,22 +11,18 @@ export const userReducer = createReducer(
   on(UsersActions.setUsers, (state, payload) => ({
     ...state,
     users: payload.users,
-})),
-  on(UsersActions.editUser, (state, payload) => ({
+  })),
+  on(UsersActions.editUser, ( state, payload: { user: User } ) => ({
     ...state,
     users: state.users.map((user) => {
-      if (user.id === payload.user.id) {
-        return payload.user;
-      } else {
-        return user;
-      }
+     return user.id === payload.user.id ? payload.user : user
     }),
   })),
-   on(UsersActions.createUser, (state, payload) => ({
+  on(UsersActions.createUser, (state, payload: { user: User }) => ({
     ...state,
     users: [...state.users, payload.user],
-})),
-  on(UsersActions.deleteUser, (state, payload) => ({
+  })),
+  on(UsersActions.deleteUser, (state, payload: { id: number }) => ({
     ...state,
     users: state.users.filter((user) => user.id !== payload.id),
   }))
