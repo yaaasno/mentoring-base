@@ -1,16 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthComponent } from '../auth/auth.component';
-import { RouterLink } from '@angular/router';
 import { UsersService } from '../admin.service';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { AdminComponent } from '../admin/admin.component';
 
 @Component ({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  imports: [RouterLink, NgIf, AsyncPipe, AdminComponent],
+  imports: [ NgIf, AsyncPipe ]
 })
 
 export class HeadComponent {

@@ -7,13 +7,13 @@ import { UsersService } from './admin.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgFor, RouterLink, AsyncPipe, HeadComponent],
+  imports: [RouterOutlet, NgIf, NgFor, RouterLink, HeadComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
 export class AppComponent {
-  title(title: any) {
+  title(title: string) {
     throw new Error('Method not implemented.');
   }
   public readonly userService = inject(UsersService);

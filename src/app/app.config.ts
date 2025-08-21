@@ -7,15 +7,17 @@ import { provideStore } from '@ngrx/store';
 import { userReducer } from './users-list/user-store/users.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { todoReducer } from './todos-list/todos-store/todos.reducer';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(), provideAnimationsAsync(),
     provideStore({
-      users: userReducer,
-      todos: todoReducer
+        users: userReducer,
+        todos: todoReducer
     }),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
-  ]
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideEffects()
+]
 };
