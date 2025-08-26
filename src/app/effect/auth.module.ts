@@ -1,15 +1,6 @@
-import { EffectsModule } from '@ngrx/effects';
-import { Injectable, NgModule } from '@angular/core';
+import { provideEffects } from '@ngrx/effects';
 import { AuthEffects } from './auth.effect';
 
-@Injectable({
-  providedIn: 'root'
-})
-
-@NgModule({
-  imports: [
-    EffectsModule.forRoot([AuthEffects])
-  ]
-})
-
-export class AppModule {}
+export const appConfig = [
+  provideEffects(AuthEffects)
+];
