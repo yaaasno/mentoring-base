@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { User } from '../users-list/user';
 
 export interface AuthCredentials {
+  id: number;
   email: string;
   password: string;
 }
@@ -18,5 +19,5 @@ export const loginSuccess = createAction(
 
 export const loginFailure = createAction(
   '[Auth] Login Failure',
-  props<{ error: User }>()
+  props<{ error: string }>()
 );

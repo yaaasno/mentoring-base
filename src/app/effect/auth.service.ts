@@ -13,19 +13,20 @@ export class AuthService {
       return of({
         id: 1,
         email: 'admin',
-        isAdmin: true, name: 'Admin User',
+        isAdmin: true,
+        name: 'Admin User',
         website: 'adminsite.com',
         company: { name: 'Admin Corp' }
       })
     } else {
       return of({
-        id: 2,
+        id: credentials.id,
         email: credentials.email,
         isAdmin: false,
         name: 'Regular User',
         website: 'usersite.com',
         company: { name: 'User Inc' }
-      });
+      })
     }
   }
 }
